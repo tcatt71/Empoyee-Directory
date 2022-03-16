@@ -1,0 +1,39 @@
+:root {
+  font-size: 62.5%;;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  background-color: #fcfcfc;
+}
+
+main {
+  max-width: 101rem;
+  /* height: calc(100vh - 12rem); */
+  /* margin: 5rem auto; */
+  margin: 0 auto;
+}
+
+h1 {
+  color: #4c4c4c;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  /* margin: 0 0 2.5rem 0; */
+  text-transform: uppercase;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  /* height: calc(100% - 2.7rem); */
+}
+
+.card {
+  background-color: #fff;
+  border: solid #dfdfdf 0.2rem;
+  border-radius: 0.5rem;
+}
