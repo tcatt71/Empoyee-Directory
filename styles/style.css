@@ -5,8 +5,14 @@
 body {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
-  margin: 0;
+  font-size: 1.25rem;
   background-color: #fcfcfc;
+}
+
+body,
+h1,
+p {
+  margin: 0;
 }
 
 main {
@@ -33,7 +39,36 @@ h1 {
 }
 
 .card {
+  display: flex;
+  justify-content: space-around;
   background-color: #fff;
+  padding: 0.5rem;
   border: solid #dfdfdf 0.2rem;
   border-radius: 0.5rem;
+}
+
+img {
+  width: 9rem;
+  padding: 1.5rem 0;
+  border-radius: 50%;
+}
+
+address {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #83898d;
+  font-style: normal;
+  line-height: 1.75;
+}
+
+.employee-name {
+  color: #404a51;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+a {
+  color: #83898d;
+  text-decoration: none;
 }
