@@ -40,16 +40,15 @@ h1 {
 
 .card {
   display: flex;
-  justify-content: space-around;
   background-color: #fff;
-  padding: 0.5rem;
+  padding: 0.25rem;
   border: solid #dfdfdf 0.2rem;
   border-radius: 0.5rem;
 }
 
 img {
   width: 9rem;
-  padding: 1.5rem 0;
+  padding: 1.5rem;
   border-radius: 50%;
 }
 
