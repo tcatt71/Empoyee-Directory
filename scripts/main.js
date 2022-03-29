@@ -7,12 +7,20 @@ fetch('https://randomuser.me/api/?results=12')
 
 function populateCards(data) {
   for (let i = 0; i < data.results.length; i++) {
+    const employee = data.results[i];
+
+    const picture = employee.picture.medium;
+    const firstName = employee.name.first;
+    const lastName = employee.name.last;
+    const email = employee.email;
+    const city = employee.location.city;
+
     const cardHtml = `
-      <img src="${data.results[i].picture.medium}">
+      <img src="${picture}">
       <address>
-        <p class="employee-name">${data.results[i].name.first} ${data.results[i].name.last}</p>
-        <a href="mailto:${data.results[i].email}">${data.results[i].email}</a>
-        <p>${data.results[i].location.city}</p>
+        <p class="employee-name">${firstName} ${lastName}</p>
+        <a href="mailto:${email}">${email}</a>
+        <p>${city}</p>
       </address>
     `;
     cards[i].innerHTML = cardHtml;
