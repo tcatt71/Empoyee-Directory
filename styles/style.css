@@ -1,9 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   font-size: 62.5%;;
 }
 
 body {
-  box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   font-size: 1.25rem;
   background-color: #fcfcfc;
@@ -16,7 +19,7 @@ p {
 }
 
 main {
-  max-width: 101rem;
+  max-width: 105rem;
   margin: 0 auto;
 }
 
@@ -49,7 +52,7 @@ h1 {
 }
 
 img {
-  width: 9rem;
+  width: 12.5rem;
   padding: 1.5rem;
   border-radius: 50%;
 }
