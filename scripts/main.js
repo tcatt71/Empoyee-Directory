@@ -2,7 +2,6 @@ const cards = document.querySelectorAll('.card');
 
 fetch('https://randomuser.me/api/?results=12&nat=us')
   .then(Response => Response.json())
-  // .then(data => console.log(data))
   .then(data => populateCards(data));
 
 function populateCards(data) {
