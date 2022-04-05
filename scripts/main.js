@@ -1,4 +1,7 @@
 const cards = document.querySelectorAll('.card');
+const cardsArr = Array.from(cards);
+const modalOverlay = document.querySelector('.modal-overlay');
+const modal = document.querySelector('.modal');
 
 fetch('https://randomuser.me/api/?results=12&nat=us')
   .then(Response => Response.json())
@@ -23,6 +26,54 @@ function populateCards(data) {
       </address>
     `;
     cards[i].innerHTML = cardHtml;
+    cards[i].addEventListener('click', (e) => {
+      displayModal(data, e);
+    });
   }
 }
 
+function displayModal(data, e) {
+  const employee = data.results[cardsArr.indexOf(e.currentTarget)];
+
+  const employeePicture = employee.picture.medium;
+  const firstName = employee.name.first;
+  const lastName = employee.name.last;
+  const email = employee.email;
+  const city = employee.location.city;
+  const phoneNumber = employee.phone.replace('-', ' ');
+  const streetNumber = employee.location.street.number;
+  const streetName = employee.location.street.name;
+  const state = employee.location.state;
+  const zipCode = employee.location.postcode;
+  const birthday = new Date(employee.dob.date).toLocaleDateString();
+
+  modalOverlay.style.display = 'flex';
+  modal.innerHTML = `
+    <div class="modal-upper-section">
+      <div class="modal-close">&times;</div>
+      <img src="${employeePicture}">
+      <address>
+        <p class="employee-name">${firstName} ${lastName}</p>
+        <a href="mailto:${email}">${email}</a>
+        <p>${city}</p>
+      </address>
+    </div>
+    <div class="additional-info">
+      <address>
+        <a href="tel:${phoneNumber}">${phoneNumber}</a>
+        <p>${streetNumber} ${streetName}, ${state} ${zipCode}<p>
+        <p>Birthday: <time>${birthday}</time></p>
+      </address>
+    </div>
+  `;
+
+  const modalCloseBtn = modal.querySelector('.modal-close');
+
+  modalCloseBtn.addEventListener('click', () => modalOverlay.style.display = 'none');
+}
+
+modalOverlay.addEventListener('click', e => {
+  if (!e.target.closest('.modal')) {
+    modalOverlay.style.display = 'none';
+  }
+});
