@@ -19,7 +19,7 @@ p {
 }
 
 .wrapper {
-  max-width: 105rem;
+  max-width: 110rem;
   margin: 0 auto;
 }
 
@@ -52,8 +52,8 @@ input::placeholder {
 
 .grid-container {
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, calc(33.3% - 5rem / 3));
   gap: 2.5rem;
 }
 
