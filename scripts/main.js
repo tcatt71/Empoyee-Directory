@@ -29,9 +29,7 @@ function populateCards(data) {
     `;
     card.innerHTML = cardHtml;
     gridContainer.appendChild(card);
-    card.addEventListener('click', (e) => {
-      displayModal(data, e);
-    });
+    card.addEventListener('click', e => displayModal(data, e));
   }
 }
 
