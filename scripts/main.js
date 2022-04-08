@@ -1,5 +1,4 @@
-const cards = document.querySelectorAll('.card');
-const cardsArr = Array.from(cards);
+const gridContainer = document.querySelector('.grid-container');
 const modalOverlay = document.querySelector('.modal-overlay');
 const modal = document.querySelector('.modal');
 
@@ -17,6 +16,9 @@ function populateCards(data) {
     const email = employee.email;
     const city = employee.location.city;
 
+    const card = document.createElement('div');
+    card.className = 'card';
+
     const cardHtml = `
       <img src="${picture}">
       <address>
@@ -25,14 +27,17 @@ function populateCards(data) {
         <p>${city}</p>
       </address>
     `;
-    cards[i].innerHTML = cardHtml;
-    cards[i].addEventListener('click', (e) => {
+    card.innerHTML = cardHtml;
+    gridContainer.appendChild(card);
+    card.addEventListener('click', (e) => {
       displayModal(data, e);
     });
   }
 }
 
 function displayModal(data, e) {
+  const cards = document.querySelectorAll('.card');
+  const cardsArr = Array.from(cards);
   const employee = data.results[cardsArr.indexOf(e.currentTarget)];
 
   const employeePicture = employee.picture.medium;
