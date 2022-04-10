@@ -119,26 +119,29 @@ a {
   border-radius: 0.5rem;
 }
 
-.modal::before {
-  content: '\25c1';
+.left-triangle {
   position: absolute;
   top: 50%;
-  left: 1rem;
-  transform: translate(0, -50%);
+  left: 0;
+  transform: translate(0, -60%);
   color: lightgrey;
-  font-size: 4rem;
+  font-size: 8rem;
   cursor: pointer;
 }
 
-.modal::after {
-  content: '\25b7';
+.right-triangle {
   position: absolute;
   bottom: 50%;
-  right: 1rem;
-  transform: translate(0, 50%);
+  right: 0;
+  transform: translate(0, 40%);
   color: lightgrey;
-  font-size: 4rem;
+  font-size: 8rem;
   cursor: pointer;
+}
+
+.left-triangle:hover,
+.right-triangle:hover {
+  color: #404a51;
 }
 
 .modal img {

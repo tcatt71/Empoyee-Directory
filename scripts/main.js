@@ -65,6 +65,8 @@ function displayModal(data, e) {
 
   modalOverlay.style.display = 'flex';
   modal.innerHTML = `
+    <div class="left-triangle">&ltri;</div>
+    <div class="right-triangle">&rtri;</div>
     <div class="modal-upper-section">
       <div class="modal-close">&times;</div>
       <img src="${employeePicture}">
