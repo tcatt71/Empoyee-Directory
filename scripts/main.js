@@ -33,6 +33,19 @@ function populateCards(data) {
   }
 }
 
+searchBox.addEventListener('keyup', () => {
+  const cards = document.querySelectorAll('.card');
+  const searchParam = searchBox.value.toLowerCase();
+
+  cards.forEach(card => {
+    const name = card.querySelector('.employee-name').textContent.toLowerCase();
+
+    if (!name.startsWith(searchParam)) {
+      card.style.display = 'none';
+    }
+  });
+});
+
 function displayModal(data, e) {
   const cards = document.querySelectorAll('.card');
   const cardsArr = Array.from(cards);
