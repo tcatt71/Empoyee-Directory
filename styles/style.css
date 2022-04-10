@@ -119,6 +119,28 @@ a {
   border-radius: 0.5rem;
 }
 
+.modal::before {
+  content: '\25c1';
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translate(0, -50%);
+  color: lightgrey;
+  font-size: 4rem;
+  cursor: pointer;
+}
+
+.modal::after {
+  content: '\25b7';
+  position: absolute;
+  bottom: 50%;
+  right: 1rem;
+  transform: translate(0, 50%);
+  color: lightgrey;
+  font-size: 4rem;
+  cursor: pointer;
+}
+
 .modal img {
   padding: unset;
 }
