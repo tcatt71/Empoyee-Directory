@@ -119,24 +119,25 @@ a {
   border-radius: 0.5rem;
 }
 
-.left-triangle {
+.left-triangle,
+.right-triangle {
   position: absolute;
+  color: lightgrey;
+  font-size: 8rem;
+  cursor: pointer;
+  transition-duration: 0.25s;
+}
+
+.left-triangle {
   top: 50%;
   left: 0;
   transform: translate(0, -60%);
-  color: lightgrey;
-  font-size: 8rem;
-  cursor: pointer;
 }
 
 .right-triangle {
-  position: absolute;
   bottom: 50%;
   right: 0;
   transform: translate(0, 40%);
-  color: lightgrey;
-  font-size: 8rem;
-  cursor: pointer;
 }
 
 .left-triangle:hover,
