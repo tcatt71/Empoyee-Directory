@@ -1,6 +1,8 @@
 const gridContainer = document.querySelector('.grid-container');
 const modalOverlay = document.querySelector('.modal-overlay');
 const modal = document.querySelector('.modal');
+let employee = null;
+let index = 0;
 
 fetch('https://randomuser.me/api/?results=12&nat=us')
   .then(Response => Response.json())
@@ -48,10 +50,40 @@ searchBox.addEventListener('keyup', () => {
   });
 });
 
-function displayModal(data, e) {
+function navigateEmployees(data, event) {
   const cards = document.querySelectorAll('.card');
   const cardsArr = Array.from(cards);
-  const employee = data.results[cardsArr.indexOf(e.currentTarget)];
+  const leftTriangle = document.querySelector('.js-left-triangle');
+
+  if (event.target === leftTriangle) {
+    if (index === 0) {
+      index = cardsArr.length - 1;
+      return data.results[index];
+    } else {
+      --index;
+      return data.results[index];
+    }
+  } else {
+    if (index === cardsArr.length - 1) {
+      index = 0;
+      return data.results[index];
+    } else {
+      ++index;
+      return data.results[index];
+    }
+  }
+}
+
+function displayModal(data, event) {
+  const cards = document.querySelectorAll('.card');
+  const cardsArr = Array.from(cards);
+
+  if (event.currentTarget.classList.contains('card')) {
+    index = cardsArr.indexOf(event.currentTarget);
+    employee = data.results[index];
+  } else {
+    employee = navigateEmployees(data, event);
+  }
 
   const employeePicture = employee.picture.medium;
   const firstName = employee.name.first;
@@ -67,8 +99,8 @@ function displayModal(data, e) {
 
   modalOverlay.style.display = 'flex';
   modal.innerHTML = `
-    <div class="left-triangle">&ltri;</div>
-    <div class="right-triangle">&rtri;</div>
+    <div class="left-triangle js-left-triangle">&ltri;</div>
+    <div class="right-triangle js-right-triangle">&rtri;</div>
     <div class="modal-upper-section">
       <div class="modal-close">&times;</div>
       <img src="${employeePicture}">
@@ -88,12 +120,18 @@ function displayModal(data, e) {
   `;
 
   const modalCloseBtn = modal.querySelector('.modal-close');
+  const leftTriangle = document.querySelector('.js-left-triangle');
+  const rightTriangle = document.querySelector('.js-right-triangle');
 
   modalCloseBtn.addEventListener('click', () => modalOverlay.style.display = 'none');
+  leftTriangle.addEventListener('click', e => displayModal(data, e));
+  rightTriangle.addEventListener('click', e => displayModal(data, e));
 }
 
 modalOverlay.addEventListener('click', e => {
-  if (!e.target.closest('.modal')) {
+  if (e.target.classList.contains('js-left-triangle') || e.target.classList.contains('js-right-triangle')) {
+    modalOverlay.style.display = 'flex';
+  } else if (!e.target.closest('.modal')) {
     modalOverlay.style.display = 'none';
   }
 });
