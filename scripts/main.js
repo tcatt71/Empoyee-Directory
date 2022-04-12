@@ -28,8 +28,8 @@ function populateCards(data) {
       </address>
     `;
     card.innerHTML = cardHtml;
+    card.addEventListener('click', (e) => displayModal(data, e));
     gridContainer.appendChild(card);
-    card.addEventListener('click', e => displayModal(data, e));
   }
 }
 
@@ -40,7 +40,9 @@ searchBox.addEventListener('keyup', () => {
   cards.forEach(card => {
     const name = card.querySelector('.employee-name').textContent.toLowerCase();
 
-    if (!name.startsWith(searchParam)) {
+    if (name.startsWith(searchParam)) {
+      card.style.display = 'flex';
+    } else {
       card.style.display = 'none';
     }
   });
