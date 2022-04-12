@@ -1,6 +1,6 @@
-const gridContainer = document.querySelector('.grid-container');
-const modalOverlay = document.querySelector('.modal-overlay');
-const modal = document.querySelector('.modal');
+const gridContainer = document.querySelector('.js-grid-container');
+const modalOverlay = document.querySelector('.js-modal-overlay');
+const modal = document.querySelector('.js-modal');
 let employee = null;
 let index = 0;
 
@@ -19,12 +19,12 @@ function populateCards(data) {
     const city = employee.location.city;
 
     const card = document.createElement('div');
-    card.className = 'card';
+    card.classList.add('card', 'js-card');
 
     const cardHtml = `
       <img src="${picture}">
       <address>
-        <p class="employee-name">${firstName} ${lastName}</p>
+        <p class="employee-name js-employee-name">${firstName} ${lastName}</p>
         <a href="mailto:${email}">${email}</a>
         <p>${city}</p>
       </address>
@@ -36,11 +36,11 @@ function populateCards(data) {
 }
 
 searchBox.addEventListener('keyup', () => {
-  const cards = document.querySelectorAll('.card');
+  const cards = document.querySelectorAll('.js-card');
   const searchParam = searchBox.value.toLowerCase();
 
   cards.forEach(card => {
-    const name = card.querySelector('.employee-name').textContent.toLowerCase();
+    const name = card.querySelector('.js-employee-name').textContent.toLowerCase();
 
     if (name.startsWith(searchParam)) {
       card.style.display = 'flex';
@@ -51,7 +51,7 @@ searchBox.addEventListener('keyup', () => {
 });
 
 function navigateEmployees(data, event) {
-  const cards = document.querySelectorAll('.card');
+  const cards = document.querySelectorAll('.js-card');
   const cardsArr = Array.from(cards);
   const leftTriangle = document.querySelector('.js-left-triangle');
 
@@ -75,10 +75,10 @@ function navigateEmployees(data, event) {
 }
 
 function displayModal(data, event) {
-  const cards = document.querySelectorAll('.card');
+  const cards = document.querySelectorAll('.js-card');
   const cardsArr = Array.from(cards);
 
-  if (event.currentTarget.classList.contains('card')) {
+  if (event.currentTarget.classList.contains('js-card')) {
     index = cardsArr.indexOf(event.currentTarget);
     employee = data.results[index];
   } else {
@@ -102,7 +102,7 @@ function displayModal(data, event) {
     <div class="left-triangle js-left-triangle">&ltri;</div>
     <div class="right-triangle js-right-triangle">&rtri;</div>
     <div class="modal-upper-section">
-      <div class="modal-close">&times;</div>
+      <div class="modal-close js-modal-close">&times;</div>
       <img src="${employeePicture}">
       <address>
         <p class="employee-name">${firstName} ${lastName}</p>
@@ -119,7 +119,7 @@ function displayModal(data, event) {
     </div>
   `;
 
-  const modalCloseBtn = modal.querySelector('.modal-close');
+  const modalCloseBtn = modal.querySelector('.js-modal-close');
   const leftTriangle = document.querySelector('.js-left-triangle');
   const rightTriangle = document.querySelector('.js-right-triangle');
 
@@ -131,7 +131,7 @@ function displayModal(data, event) {
 modalOverlay.addEventListener('click', e => {
   if (e.target.classList.contains('js-left-triangle') || e.target.classList.contains('js-right-triangle')) {
     modalOverlay.style.display = 'flex';
-  } else if (!e.target.closest('.modal')) {
+  } else if (!e.target.closest('.js-modal')) {
     modalOverlay.style.display = 'none';
   }
 });
