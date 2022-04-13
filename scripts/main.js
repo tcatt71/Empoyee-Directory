@@ -1,6 +1,7 @@
 const gridContainer = document.querySelector('.js-grid-container');
 const modalOverlay = document.querySelector('.js-modal-overlay');
 const modal = document.querySelector('.js-modal');
+const searchBox = document.querySelector('.js-search-box');
 let employee = null;
 let index = 0;
 
