@@ -97,7 +97,6 @@ function displayModal(data, event) {
   const zipCode = employee.location.postcode;
   const birthday = new Date(employee.dob.date).toLocaleDateString();
 
-  modalOverlay.style.display = 'flex';
   modal.innerHTML = `
     <div class="left-triangle js-left-triangle">&ltri;</div>
     <div class="right-triangle js-right-triangle">&rtri;</div>
@@ -126,6 +125,8 @@ function displayModal(data, event) {
   modalCloseBtn.addEventListener('click', () => modalOverlay.style.display = 'none');
   leftTriangle.addEventListener('click', e => displayModal(data, e));
   rightTriangle.addEventListener('click', e => displayModal(data, e));
+
+  modalOverlay.style.display = 'flex';
 }
 
 modalOverlay.addEventListener('click', e => {
