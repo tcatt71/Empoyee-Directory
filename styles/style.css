@@ -19,7 +19,7 @@ p {
 }
 
 .wrapper {
-  max-width: 115rem;
+  max-width: 101rem;
   margin: 0 auto;
 }
 
@@ -55,6 +55,7 @@ input::placeholder {
   justify-content: center;
   grid-template-columns: repeat(auto-fit, calc(33.3% - 5rem / 3));
   gap: 2.5rem;
+  gap: 2.25rem;
 }
 
 .card {
