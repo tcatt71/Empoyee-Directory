@@ -113,10 +113,10 @@ a {
 
 .modal {
   position: absolute;
-  width: 33.25rem;
+  width: 27rem;
   height: 39.5rem;
   text-align: center;
-  top: 10.5rem;
+  top: 9rem;
   left: 50%;
   transform: translate(-50%, 0);
   background-color: #ffffff;
@@ -180,4 +180,11 @@ a {
 .additional-info address {
   line-height: 2.3;
   padding-bottom: 0.5rem;
+}
+
+@media (min-width: 22.5em) {
+  .modal {
+    width: 34rem;
+    max-width: unset;
+  }
 }
