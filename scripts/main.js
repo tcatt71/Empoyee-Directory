@@ -31,7 +31,7 @@ function populateCards(data) {
       </address>
     `;
     card.innerHTML = cardHtml;
-    card.addEventListener('click', (e) => displayModal(data, e));
+    card.addEventListener('click', e => displayModal(data, e));
     gridContainer.appendChild(card);
   }
 }
